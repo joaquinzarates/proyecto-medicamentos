@@ -18,8 +18,8 @@ public class ReporteMedicamentos {
 
     public void reporteStockBajoConDescuento(String categoria) {
         System.out.println("\n========== STOCK BAJO CON DESCUENTO ==========");
-        System.out.println("Categoría con descuento: " + categoria);
-        System.out.println("------");
+        System.out.println("Categoria con descuento: " + categoria);
+
 
         List<Medicamento> medicamentosDescuentados = service.obtenerStockBajoConDescuento(categoria);
 
@@ -49,8 +49,8 @@ public class ReporteMedicamentos {
 
 
     public void reportePorCategoria() {
-        System.out.println("\n========== MEDICAMENTOS POR CATEGORÍA ==========");
-        System.out.println("------");
+        System.out.println("\n========== MEDICAMENTOS POR CATEGORIA ==========");
+
 
         Map<String, List<Medicamento>> agrupados = service.agruparPorCategoria();
 
@@ -65,14 +65,14 @@ public class ReporteMedicamentos {
 
 
     public void reporteEstadisticas() {
-        System.out.println("\n========== ESTADÍSTICAS POR CATEGORÍA ==========");
-        System.out.println("------");
+        System.out.println("\n========== ESTADISTICAS POR CATEGORIA ==========");
+
 
         Map<String, Long> conteos = service.contarPorCategoria();
 
         conteos.forEach((categoria, cantidad) -> {
             double promedio = service.precioPromedioPorCategoria(categoria);
-            System.out.println("\nCategoría: " + categoria);
+            System.out.println("\nCategoria: " + categoria);
             System.out.println("  Cantidad: " + cantidad);
             System.out.println("  Precio Promedio: $" + String.format("%.2f", promedio));
         });
@@ -81,7 +81,7 @@ public class ReporteMedicamentos {
 
     public void reporteResumen() {
         System.out.println("\n========== REPORTE MEDICAMENTOS ==========");
-        System.out.println("------");
+
 
         String resumen = service.filtrarPorValidador(med -> med.getStock() > 0).stream()
                 .map(Medicamento::getNombre)

@@ -13,8 +13,8 @@ import java.util.Optional;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("SISTEMA DE GESTIÓN DE MEDICAMENTOS CON JAVA");
-        System.out.println("programación funcional");
+        System.out.println("SISTEMA DE GESTION DE MEDICAMENTOS CON JAVA");
+        System.out.println("programacion funcional");
 
 
 
@@ -22,10 +22,10 @@ public class Main {
 
 
         List<Medicamento> medicamentos = Arrays.asList(
-                new Medicamento("Ibuprofeno 400mg", 25.50, 5, "Analgésicos"),
-                new Medicamento("Paracetamol 500mg", 15.00, 15, "Analgésicos"),
-                new Medicamento("Amoxicilina 500mg", 45.00, 8, "Antibióticos"),
-                new Medicamento("Cefalexina 500mg", 52.00, 3, "Antibióticos"),
+                new Medicamento("Ibuprofeno 400mg", 25.50, 5, "Analgesicos"),
+                new Medicamento("Paracetamol 500mg", 15.00, 15, "Analgesicos"),
+                new Medicamento("Amoxicilina 500mg", 45.00, 8, "Antibioticos"),
+                new Medicamento("Cefalexina 500mg", 52.00, 3, "Antibioticos"),
                 new Medicamento("Vitamina C 1000mg", 18.75, 0, "Vitaminas"),
                 new Medicamento("Vitamina D 1000IU", 32.00, 20, "Vitaminas"),
                 new Medicamento("Omeprazol 20mg", 38.50, 7, "Gastroprotectores"),
@@ -39,13 +39,13 @@ public class Main {
 
 
 
-        System.out.println("BÚSQUEDA CON OPTIONAL");
+        System.out.println("\nBUSQUEDA CON OPTIONAL");
 
 
 
-        Optional<Medicamento> medicamentoEncontrado = service.buscarPorNombreSeguro("Ibuprofeno 400mg");
+        Optional<Medicamento> medicamentoEncontrado = service.buscarPorNombreSeguro("Vitamina C 1000mg");
         medicamentoEncontrado.ifPresentOrElse(
-                med -> System.out.println("✓ Medicamento encontrado: " + med),
+                med -> System.out.println(" Medicamento encontrado: " + med),
                 () -> System.out.println("✗ Medicamento no encontrado")
         );
 
@@ -58,7 +58,7 @@ public class Main {
         try {
             Medicamento medicamento = service.buscarPorNombre("Medicamento Fantasma");
         } catch (Exception e) {
-            System.out.println("✓ Excepción capturada: " + e.getMessage());
+            System.out.println(" Excepcion capturada: " + e.getMessage());
         }
 
 
@@ -66,13 +66,13 @@ public class Main {
         System.out.println("STREAMS CON FILTER Y MAP");
 
 
-        List<Medicamento> stockBajoConDescuento = service.obtenerStockBajoConDescuento("Analgésicos");
-        System.out.println("Medicamentos con stock bajo (< 10) con 15% descuento en 'Analgésicos':");
+        List<Medicamento> stockBajoConDescuento = service.obtenerStockBajoConDescuento("Analgesicos");
+        System.out.println("Medicamentos con stock bajo (< 10) con 15% descuento en 'Analgesicos':");
         stockBajoConDescuento.forEach(med ->
                 System.out.println("  - " + med.getNombre() +
                         " | Precio: $" + String.format("%.2f", med.getPrecio()) +
                         " | Stock: " + med.getStock() +
-                        " | Categoría: " + med.getCategoria())
+                        " | Categoria: " + med.getCategoria())
         );
 
 
@@ -88,30 +88,30 @@ public class Main {
         precioElevado.forEach(med -> System.out.println("  - " + med.getNombre() + " (Precio: $" +
                 String.format("%.2f", med.getPrecio()) + ")"));
 
-        System.out.println("\n Medicamentos COMPUESTOS (Stock Bajo Y en Categoría 'Analgésicos'):");
+        System.out.println("\n Medicamentos COMPUESTOS (Stock Bajo Y en Categoria 'Analgesicos'):");
         var validadorCompuesto = Validadores.y(
                 Validadores.STOCK_BAJO,
-                Validadores.enCategoria("Analgésicos")
+                Validadores.enCategoria("Analgesicos")
         );
         List<Medicamento> compuestos = service.filtrarPorValidador(validadorCompuesto);
         compuestos.forEach(med -> System.out.println("  - " + med.getNombre()));
 
 
-        System.out.println("GENÉRICOS (Extensibilidad sin Casteos)");
+        System.out.println("GENERICOS (Extensibilidad sin Casteos)");
 
 
         System.out.println("Total de medicamentos en repositorio: " + repository.tamaño());
-        System.out.println("Medicamentos disponibles (genérico List<T>): " + repository.obtenerTodos().size());
+        System.out.println("Medicamentos disponibles (generico List<T>): " + repository.obtenerTodos().size());
 
 
-        System.out.println("\n Medicamentos agrupados por categoría:");
+        System.out.println("\n Medicamentos agrupados por categoria:");
         var agrupados = service.agruparPorCategoria();
         agrupados.forEach((categoria, meds) -> {
             System.out.println("\n  " + categoria + ":");
             meds.forEach(med -> System.out.println("    • " + med.getNombre()));
         });
 
-        System.out.println("\n Conteo de medicamentos por categoría:");
+        System.out.println("\n Conteo de medicamentos por categoria:");
         var conteos = service.contarPorCategoria();
         conteos.forEach((categoria, cantidad) ->
                 System.out.println("  " + categoria + ": " + cantidad)
@@ -123,11 +123,11 @@ public class Main {
 
 
         ReporteMedicamentos reportes = new ReporteMedicamentos(service);
-        reportes.reporteStockBajoConDescuento("Analgésicos");
+        reportes.reporteStockBajoConDescuento("Analgesicos");
         reportes.reportePorCategoria();
         reportes.reporteEstadisticas();
         reportes.reporteResumen();
 
-        
+
     }
 }
