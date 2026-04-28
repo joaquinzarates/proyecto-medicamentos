@@ -1,7 +1,7 @@
 package com.medicamentos.validators;
 
 
-public class Validadores{
+public class Validadores {
 
 
     public static final ReglaDeValidacion STOCK_BAJO =
