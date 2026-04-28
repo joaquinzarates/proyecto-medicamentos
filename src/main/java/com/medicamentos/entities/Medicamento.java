@@ -49,7 +49,7 @@ public class Medicamento {
 
     @Override
     public boolean equals(Object o) {
-        if (thsi == o) return true;
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Medicamento that = (Medicamento) o;
         return Double.compare(that.precio, precio) == 0 &&
@@ -59,7 +59,7 @@ public class Medicamento {
     }
 
     @Override
-    public int hashCod() {
+    public int hashCode() {
         return Objects.hash(nombre, precio, stock, categoria);
     }
 
