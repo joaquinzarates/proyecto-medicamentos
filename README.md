@@ -16,8 +16,8 @@ src/
             │   └── MedicamentoNoEncontradoException.java
             │
             ├── validators/
-            │   ├── Filtro.java
-            │   └── FiltrosDefault.java
+            │   ├── Validador.java
+            │   └── ReglaDeValidacion.java
             │
             ├── repository/
             │   └── MedicamentoRepository.java
