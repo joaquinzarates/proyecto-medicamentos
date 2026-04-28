@@ -3,7 +3,7 @@ package com.medicamentos.validators;
 import com.medicamentos.entities.Medicamento;
 
 @FunctionalInterface
-public interface ValidadorCalidad {
+public interface ReglaDeValidacion {
 
     boolean validar(Medicamento medicamento);
 }

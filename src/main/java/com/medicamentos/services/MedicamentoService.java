@@ -3,7 +3,7 @@ package com.medicamentos.services;
 import com.medicamentos.entities.Medicamento;
 import com.medicamentos.exceptions.MedicamentoNoEncontradoException;
 import com.medicamentos.repository.MedicamentoRepository;
-import com.medicamentos.validators.ValidadorCalidad;
+import com.medicamentos.validators.ReglaDeValidacion;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,7 +43,7 @@ public class MedicamentoService {
     }
 
 
-    public List<Medicamento> filtrarPorValidador(ValidadorCalidad validador) {
+    public List<Medicamento> filtrarPorValidador(ReglaDeValidacion validador) {
         return repository.obtenerTodos().stream()
                 .filter(validador::validar)
                 .collect(Collectors.toList());
